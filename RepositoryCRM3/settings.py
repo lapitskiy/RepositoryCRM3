@@ -79,13 +79,21 @@ WSGI_APPLICATION = 'RepositoryCRM3.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': 'RepositoryCRM3/my.cnf',
+        },
+}}
+
+'''
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'repocrm3',
         'USER': 'root',
         'PASSWORD': 'billkill',
         'HOST': 'repocrm3.c9kwg0fbps6f.eu-west-3.rds.amazonaws.com',
         'PORT': '3306',
     }
-}
+'''
 
 
 # Password validation

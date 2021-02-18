@@ -10,8 +10,8 @@ def user_directory_path(instance, filename):
 class Plugins(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название')
     module_name = models.CharField(max_length=150, blank=True, verbose_name='Имя модуля')
-    apps_install_name = models.CharField(max_length=150, blank=True, verbose_name='Имя APP INSTALL')
     description = models.TextField(blank=True, verbose_name='Описание')
+    version = models.IntegerField(default=1, verbose_name='Версия')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Обновлен')
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, verbose_name='Фото')
