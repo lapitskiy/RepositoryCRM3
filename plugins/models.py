@@ -19,6 +19,8 @@ class Plugins(models.Model):
     is_active = models.BooleanField(default=True, verbose_name='Активирован')
     category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name='Категория', related_name='get_category')
     loads = models.IntegerField(default=0)
+    related_class_name = models.CharField(max_length=150, blank=True, verbose_name='Имя класса для связи')
+
 
     def get_absolute_url(self):
         return reverse('urls_view_current_plugins', kwargs={'pk': self.pk})
@@ -46,3 +48,5 @@ class Category(models.Model):
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
         ordering = ['title']
+
+
