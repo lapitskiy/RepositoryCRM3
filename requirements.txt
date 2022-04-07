@@ -32,5 +32,4 @@ sets==0.3.2
 tblib==1.7.0
 typing_extensions==4.1.1
 uritemplate==4.1.1
-xmlrpclib==1.0.1
 zipp==3.8.0
