@@ -83,17 +83,8 @@ DATABASES = {
             'read_default_file': 'RepositoryCRM3/my.cnf',
         },
 }}
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
-'''
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'repocrm3',
-        'USER': 'root',
-        'PASSWORD': 'billkill',
-        'HOST': 'repocrm3.c9kwg0fbps6f.eu-west-3.rds.amazonaws.com',
-        'PORT': '3306',
-    }
-'''
 
 
 # Password validation
@@ -137,3 +128,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'RepositoryCRM3/static'),]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
+
+
+
