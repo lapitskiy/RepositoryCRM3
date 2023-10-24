@@ -10,6 +10,9 @@ urlpatterns = [
     path('', ViewPlugins.as_view(), name='view_plugins'),
     path('plugins/<int:pk>/', ViewCurrentPlugins.as_view(), name='urls_view_current_plugins'),
     path('plugins/add-plugins/', CreatePlugins.as_view(), name='add_plugins'),
+    path('settings/', SettingsView.as_view(), name='plugins_settings'),
+    path('settings/add/', SettingsAddView.as_view(), name='plugins_settings_add'),
+    path('settings/edit/', SettingsEditView.as_view(), name='plugins_settings_edit'),
 ]
 
 urlpatterns += router.urls

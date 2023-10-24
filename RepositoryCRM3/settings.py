@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import logging.config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = '5@-=0@!=4s^4tal0ivtc^5d24&ptt5jhxivynk2a43(kb83dvm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['192.168.0.73','127.0.0.1', 'localhost','*']
 
 
 # Application definition
@@ -38,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'plugins.apps.PluginsConfig',
+    'users.apps.UsersConfig',
     'rest_framework',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'RepositoryCRM3.urls'
@@ -83,6 +87,8 @@ DATABASES = {
             'read_default_file': 'RepositoryCRM3/my.cnf',
         },
 }}
+
+
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 
@@ -129,5 +135,39 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'RepositoryCRM3/static'),]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
 
+# DEBUG TOOLBAR
+INTERNAL_IPS = ['127.0.0.1',]
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = '/users/login/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'simple': {
+            'format': '%(asctime)s %(message)s'
+        },
+        'info_frmt': {
+            'format': '%(asctime)s %(levelname)-2s %(message)s'
+        }
+    },
+    'handlers': {
+        'crm3_hndl': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'log_info.log',
+            'formatter': 'info_frmt',
+            'encoding': 'UTF-8',
+        },
+    },
+    'loggers': {
+        'crm3_info': {
+            'handlers': ['crm3_hndl'],
+            'level': 'INFO',
+            'propagate': True,
+            },
+    },
+}

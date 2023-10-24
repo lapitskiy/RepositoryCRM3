@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - {{ block.super }}{% endblock %}
+{% block sidebar %}
+{% include 'include/_sidebar_settings_plugins.html' %}
+{% endblock %}
+
+{% block content %}
+TYT settings category
+    <form action="{% url 'plugins_settings_add' %}?model={{ model }}" method="POST">
+        {% csrf_token %}
+        {{ formAdd.non_field_errors }}
+        {{ formAdd.as_p }}
+        <button type="submit" class="btn btn-primary btn-block">Добавить</button>
+    </form>
+
+{% endblock %}
